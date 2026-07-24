@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Reputación - Candidatos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <h1>🎯 Sistema de Gestión de Reputación</h1>
+            <p>Identifica y selecciona los mejores candidatos basado en reputación integral</p>
+        </header>
+
+        <!-- Tabs de navegación -->
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="mostrarTab('agregar')">➕ Agregar Candidato</button>
+            <button class="tab-btn" onclick="mostrarTab('candidatos')">👥 Candidatos</button>
+            <button class="tab-btn" onclick="mostrarTab('ranking')">🏆 Ranking</button>
+            <button class="tab-btn" onclick="mostrarTab('analisis')">📊 Análisis</button>
+        </nav>
+
+        <!-- TAB 1: Agregar Candidato -->
+        <section id="agregar" class="tab-content active">
+            <h2>Formulario de Registro de Candidato</h2>
+            <form id="formCandidato" class="form-candidato">
+                
+                <!-- Información Básica -->
+                <fieldset>
+                    <legend>📋 Información Básica</legend>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="especialidad">Especialidad *</label>
+                        <input type="text" id="especialidad" placeholder="ej: Desarrollo Web, Data Science" required>
+                    </div>
+                </fieldset>
+
+                <!-- Métricas Técnicas -->
+                <fieldset>
+                    <legend>💻 Métricas Técnicas</legend>
+                    <div class="form-group">
+                        <label for="puntuacionTecnica">Puntuación Técnica (0-100) *</label>
+                        <input type="number" id="puntuacionTecnica" min="0" max="100" required>
+                        <small>Evaluación de habilidades técnicas</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="experiencia">Años de Experiencia *</label>
+                        <input type="number" id="experiencia" min="0" max="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificaciones">Certificaciones (separadas por comas)</label>
+                        <input type="text" id="certificaciones" placeholder="ej: AWS, Google Cloud, Azure">
+                    </div>
+                </fieldset>
+
+                <!-- Desempeño en Proyectos -->
+                <fieldset>
+                    <legend>📈 Desempeño en Proyectos</legend>
+                    <div class="form-group">
+                        <label for="tasaCumplimiento">Tasa de Cumplimiento (%) *</label>
+                        <input type="number" id="tasaCumplimiento" min="0" max="100" required>
+                        <small>Porcentaje de proyectos completados a tiempo</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="velocidadEntrega">Velocidad de Entrega (días promedio) *</label>
+                        <input type="number" id="velocidadEntrega" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="proyectosCompletados">Proyectos Completados *</label>
+                        <input type="number" id="proyectosCompletados" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="calificacionClientes">Calificación de Clientes (0-5) *</label>
+                        <input type="number" id="calificacionClientes" min="0" max="5" step="0.1" required>
+                    </div>
+                </fieldset>
+
+                <!-- Confiabilidad y Comunicación -->
+                <fieldset>
+                    <legend>🤝 Confiabilidad y Comunicación</legend>
+                    <div class="form-group">
+                        <label for="confiabilidad">Índice de Confiabilidad (0-100) *</label>
+                        <input type="number" id="confiabilidad" min="0" max="100" required>
+                        <small>Basado en cumplimiento de compromisos</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="comunicacion">Calidad de Comunicación (0-10) *</label>
+                        <input type="number" id="comunicacion" min="0" max="10" step="0.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tiempoRespuesta">Tiempo Promedio de Respuesta (horas) *</label>
+                        <input type="number" id="tiempoRespuesta" min="0" required>
+                    </div>
+                </fieldset>
+
+                <!-- Redes Sociales y Presencia Web -->
+                <fieldset>
+                    <legend>📱 Redes Sociales y Presencia Web</legend>
+                    <div class="form-group">
+                        <label for="seguidoresGithub">Seguidores GitHub</label>
+                        <input type="number" id="seguidoresGithub" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="repositoriosGithub">Repositorios GitHub Relevantes</label>
+                        <input type="number" id="repositoriosGithub" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="seguidoresLinkedin">Seguidores LinkedIn</label>
+                        <input type="number" id="seguidoresLinkedin" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="endorsementsLinkedin">Endorsements LinkedIn</label>
+                        <input type="number" id="endorsementsLinkedin" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="seguidoresTwitter">Seguidores Twitter/X</label>
+                        <input type="number" id="seguidoresTwitter" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="publicacionesTecnicas">Publicaciones Técnicas (Blog, Medium, etc.)</label>
+                        <input type="number" id="publicacionesTecnicas" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="mencionesWeb">Menciones en Web (búsqueda Google)</label>
+                        <input type="number" id="mencionesWeb" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="puntosStackOverflow">Puntos Stack Overflow</label>
+                        <input type="number" id="puntosStackOverflow" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="contribucionesOpenSource">Contribuciones Open Source</label>
+                        <input type="number" id="contribucionesOpenSource" min="0">
+                    </div>
+                </fieldset>
+
+                <!-- Score de Escucha Social -->
+                <fieldset>
+                    <legend>🔊 Score de Escucha Social</legend>
+                    <div class="form-group">
+                        <label for="sentimientoRedes">Sentimiento en Redes (0-100) *</label>
+                        <input type="number" id="sentimientoRedes" min="0" max="100" required>
+                        <small>Análisis de menciones positivas vs negativas</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="relevanciaWeb">Relevancia Web (0-100) *</label>
+                        <input type="number" id="relevanciaWeb" min="0" max="100" required>
+                        <small>Influencia y reconocimiento en la web</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="engagementPromedio">Engagement Promedio en Redes (%) *</label>
+                        <input type="number" id="engagementPromedio" min="0" max="100" step="0.1" required>
+                        <small>Interacción con su contenido</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="alcancePromedio">Alcance Promedio por Post</label>
+                        <input type="number" id="alcancePromedio" min="0">
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-primary">✅ Guardar Candidato</button>
+            </form>
+        </section>
+
+        <!-- TAB 2: Lista de Candidatos -->
+        <section id="candidatos" class="tab-content">
+            <h2>Candidatos Registrados</h2>
+            <div class="filtros">
+                <input type="text" id="filtroNombre" placeholder="🔍 Buscar por nombre..." onkeyup="filtrarCandidatos()">
+                <select id="filtroEspecialidad" onchange="filtrarCandidatos()">
+                    <option value="">Todas las especialidades</option>
+                </select>
+            </div>
+            <div id="listaCandidatos" class="lista-candidatos"></div>
+        </section>
+
+        <!-- TAB 3: Ranking -->
+        <section id="ranking" class="tab-content">
+            <h2>🏆 Ranking de Candidatos</h2>
+            <div class="opciones-ranking">
+                <button onclick="ordenarRanking('general')">Puntuación General</button>
+                <button onclick="ordenarRanking('tecnica')">Puntuación Técnica</button>
+                <button onclick="ordenarRanking('social')">Score Social</button>
+                <button onclick="ordenarRanking('confiabilidad')">Confiabilidad</button>
+            </div>
+            <div id="rankingList" class="ranking-list"></div>
+        </section>
+
+        <!-- TAB 4: Análisis -->
+        <section id="analisis" class="tab-content">
+            <h2>📊 Análisis Detallado</h2>
+            <div class="analisis-container">
+                <div class="stat-box">
+                    <h3>Total de Candidatos</h3>
+                    <p id="totalCandidatos">0</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Puntuación Promedio General</h3>
+                    <p id="promediogeneral">0</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Mejor Candidato</h3>
+                    <p id="mejorCandidato">-</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Score Social Promedio</h3>
+                    <p id="scoreocialPromedio">0</p>
+                </div>
+            </div>
+            <div id="graficoAnalisis" class="grafico-container"></div>
+            <button onclick="exportarDatos()" class="btn-secondary">📥 Exportar Datos JSON</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
