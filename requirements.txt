@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+asyncpg
+httpx
+feedparser
+spacy
+pydantic
+python-dotenv
+aiofiles
+httpx
+Mastodon.py
